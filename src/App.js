@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {  Route, Switch } from 'react-router-dom';
+import Home from './Components/Home';
+import UserStats from './Components/UserStatus';
+import Repositories from './Components/Reprositories';
+import RepoStats from './Components/Repostatus';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/user/:username" component={UserStats} />
+        <Route exact path="/user/:username/repositories" component={Repositories} />
+        <Route exact path="/repo/:owner/:repoName" component={RepoStats} />
+      </Switch>
+   
   );
 }
 
